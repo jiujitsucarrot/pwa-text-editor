@@ -1,30 +1,38 @@
-const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
-const { CacheFirst } = require('workbox-strategies');
-const { registerRoute } = require('workbox-routing');
-const { CacheableResponsePlugin } = require('workbox-cacheable-response');
-const { ExpirationPlugin } = require('workbox-expiration');
-const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
+import { precacheAndRoute } from 'workbox-precaching';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { registerRoute } from 'workbox-routing';
 
-precacheAndRoute(self.__WB_MANIFEST);
+// Precache and route all static assets using Workbox
+workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
-const pageCache = new CacheFirst({
-  cacheName: 'page-cache',
-  plugins: [
-    new CacheableResponsePlugin({
-      statuses: [0, 200],
-    }),
-    new ExpirationPlugin({
-      maxAgeSeconds: 30 * 24 * 60 * 60,
-    }),
-  ],
-});
+// Cache and serve the HTML page with CacheFirst strategy
+registerRoute(
+  ({ request }) => request.destination === 'document',
+  new CacheFirst({
+    cacheName: 'html-cache',
+  })
+);
 
-warmStrategyCache({
-  urls: ['/index.html', '/'],
-  strategy: pageCache,
-});
+// Cache and serve other assets with StaleWhileRevalidate
+registerRoute(
+  ({ request }) => request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate({
+    cacheName: 'assets-cache',
+  })
+);
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+// Cache and serve image assets with CacheFirst
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'image-cache',
+  })
+);
 
-// TODO: Implement asset caching
-registerRoute();
+// Cache and serve fonts with CacheFirst
+registerRoute(
+  ({ request }) => request.destination === 'font',
+  new CacheFirst({
+    cacheName: 'font-cache',
+  })
+);
