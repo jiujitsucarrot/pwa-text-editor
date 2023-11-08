@@ -1,4 +1,4 @@
-# 19 Progressive Web Applications (PWA): Text Editor
+# Just Another Text Editor
 
 ## Your Task
 
@@ -48,23 +48,18 @@ WHEN I deploy to Heroku
 THEN I should have proper build scripts for a webpack application
 ```
 
-## Mock-Up
+## Links
 
-The following animation demonstrates the application functionality:
+* https://text-editor-heroku-761941035d40.herokuapp.com/
+* https://github.com/jiujitsucarrot/pwa-text-editor
 
-![Demonstration of the finished Module 19 Challenge being used in the browser and then installed.](./Assets/00-demo.gif)
+## Sources
 
-The following image shows the application's `manifest.json` file:
+For this challenge I have and continue to run into problems. The PWA text editor was particularly challenging. To try and manuever through the starter code and add to it to reach the desired application. Whether working in the client folder, server folder, or successfully build a dist (which took me forever) all threw their own curveballs. To solve some of these issues that arose I utilized the following. Revisiting course lectures, Google, YouTube, w3schools, numerous tech blogs, reaching out to colleagues and classmates, office hours, and TA as well as instructor assisstance. Looking for additional ideas to improve my code.
 
-![Demonstration of the finished Module 19 Challenge with a manifest file in the browser.](./Assets/01-manifest.png)
+## Future Project Progression
 
-The following image shows the application's registered service worker:
-
-![Demonstration of the finished Module 19 Challenge with a registered service worker in the browser.](./Assets/02-service-worker.png)
-
-The following image shows the application's IndexedDB storage:
-
-![Demonstration of the finished Module 19 Challenge with a IndexedDB storage named 'jate' in the browser.](./Assets/03-idb-storage.png)
+For future project progression, I will achieve a much stronger web application. My code has been a bit touch and go, or shakey so to speak. I need to go through and debug further to clean up my current code so it operates much smoother. 
 
 ## Grading Requirements
 
